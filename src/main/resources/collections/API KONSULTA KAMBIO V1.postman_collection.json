@@ -1,0 +1,31 @@
+{
+	"info": {
+		"_postman_id": "5bf393cf-7b2a-4161-af3c-dff306d03fde",
+		"name": "API KONSULTA KAMBIO V1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "6549145",
+		"_collection_link": "https://galaxy-1699.postman.co/workspace/GALAXY-TRAINING~db7f2f90-b3ae-46e9-8f25-5a375b7da1dc/collection/6549145-5bf393cf-7b2a-4161-af3c-dff306d03fde?action=share&source=collection_link&creator=6549145"
+	},
+	"item": [
+		{
+			"name": "GET TIPO CAMBIO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8282/api/v1/tipo-cambio",
+					"host": [
+						"localhost"
+					],
+					"port": "8282",
+					"path": [
+						"api",
+						"v1",
+						"tipo-cambio"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
