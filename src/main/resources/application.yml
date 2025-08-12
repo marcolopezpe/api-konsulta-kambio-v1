@@ -1,0 +1,19 @@
+quarkus:
+  http:
+    port: 8282
+  rest-client:
+    eapi-tipo-cambio:
+      url: https://free.e-api.net.pe
+      scope: Singleton
+  datasource:
+    username: postgres
+    password: 123456789
+    jdbc:
+      url: jdbc:postgresql://localhost:5432/db_konsulta_kambio
+  hibernate-orm:
+    database:
+      generation: update
+    log:
+      sql: true
+      format-sql: true
+      bind-parameters: true
