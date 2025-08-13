@@ -17,7 +17,6 @@ public class DailyQuotaExceededExceptionMapper implements ExceptionMapper<DailyQ
 
 	@Override
 	public Response toResponse(DailyQuotaExceededException ex) {
-		// segundos hasta la medianoche local (siguiente día)
 		var now = ZonedDateTime.now(LIMA);
 		var midnight = now.toLocalDate().plusDays(1).atStartOfDay(LIMA);
 		long retryAfterSeconds = Duration.between(now, midnight).getSeconds();
@@ -27,7 +26,7 @@ public class DailyQuotaExceededExceptionMapper implements ExceptionMapper<DailyQ
 				429,
 				"Too Many Requests",
 				ex.getMessage(),
-				uriInfo != null ? "/" + uriInfo.getPath() : null,
+				uriInfo != null ? uriInfo.getPath() : null,
 				new Details(ex.getDni(), ex.getFecha().toString(), ex.getUsed(), ex.getLimit())
 		);
 
@@ -38,7 +37,7 @@ public class DailyQuotaExceededExceptionMapper implements ExceptionMapper<DailyQ
 				.build();
 	}
 
-	public static record ErrorResponse(
+	public record ErrorResponse(
 			String timestamp,
 			int status,
 			String error,
@@ -48,7 +47,7 @@ public class DailyQuotaExceededExceptionMapper implements ExceptionMapper<DailyQ
 	) {
 	}
 
-	public static record Details(
+	public record Details(
 			String dni,
 			String fecha,
 			long used,

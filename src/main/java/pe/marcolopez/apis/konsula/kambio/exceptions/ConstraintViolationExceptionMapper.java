@@ -19,9 +19,10 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
 
 	@Override
 	public Response toResponse(ConstraintViolationException ex) {
-		var violations = ex.getConstraintViolations().stream()
+		var violations = ex.getConstraintViolations()
+				.stream()
 				.map(v -> new Violation(
-						v.getPropertyPath().toString(),
+						v.getPropertyPath().toString().replaceAll("^.*\\.", ""),
 						v.getMessage()
 				))
 				.collect(Collectors.toList());
@@ -41,7 +42,7 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
 				.build();
 	}
 
-	public record Violation(String field, String message) {
+	public record Violation(String queryParam, String message) {
 	}
 
 	public record ErrorResponse(
