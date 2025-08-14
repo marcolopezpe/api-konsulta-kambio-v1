@@ -10,6 +10,11 @@ quarkus:
     password: 123456789
     jdbc:
       url: jdbc:postgresql://localhost:5432/db_konsulta_kambio
+    devservices:
+      enabled: true
+      db-name: db_konsulta_kambio
+      port: 5432
+      image-name: postgres:16-alpine
   hibernate-orm:
     database:
       generation: update
